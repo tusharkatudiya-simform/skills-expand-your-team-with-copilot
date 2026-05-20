@@ -470,6 +470,11 @@ input.invalid {
   outline-color: var(--error);
 }
 
+/* Lowercase email input */
+#email {
+  text-transform: lowercase;
+}
+
 /* More compact no-results message */
 .no-results {
   text-align: center;

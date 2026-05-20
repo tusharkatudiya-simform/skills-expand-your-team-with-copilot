@@ -836,7 +836,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const emailInput = document.getElementById("email");
     const emailError = document.getElementById("email-error");
-    const email = emailInput.value.trim();
+    const email = emailInput.value.trim().toLowerCase();
+
+    // Reflect the lowercased value back into the input
+    emailInput.value = email;
 
     // Client-side validation: email must end with @mergington.edu
     const emailPattern = /^[a-zA-Z0-9_%+-]+(\.[a-zA-Z0-9_%+-]+)*@mergington\.edu$/;

@@ -75,6 +75,9 @@ def signup_for_activity(activity_name: str, email: str, teacher_username: Option
     if not teacher:
         raise HTTPException(status_code=401, detail="Invalid teacher credentials")
 
+    # Normalize email to lowercase
+    email = email.lower()
+
     # Validate email format and domain
     email_pattern = re.compile(r'^[a-zA-Z0-9_%+-]+(\.[a-zA-Z0-9_%+-]+)*@mergington\.edu$')
     if not email_pattern.match(email):
