@@ -130,7 +130,10 @@
               id="email"
               required
               placeholder="your-email@mergington.edu"
+              pattern="[a-zA-Z0-9_%+-]+(\.[a-zA-Z0-9_%+-]+)*@mergington\.edu"
+              title="Email must be a valid @mergington.edu address"
             />
+            <span id="email-error" class="field-error hidden"></span>
           </div>
           <input type="hidden" id="activity" value="" />
           <button type="submit">Register</button>

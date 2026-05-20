@@ -456,6 +456,25 @@ button {
   display: none !important;
 }
 
+/* Field-level validation error */
+.field-error {
+  display: block;
+  color: var(--error);
+  font-size: 0.8rem;
+  margin-top: 4px;
+}
+
+/* Invalid input highlight */
+input.invalid {
+  border-color: var(--error);
+  outline-color: var(--error);
+}
+
+/* Lowercase email input */
+#email {
+  text-transform: lowercase;
+}
+
 /* More compact no-results message */
 .no-results {
   text-align: center;
