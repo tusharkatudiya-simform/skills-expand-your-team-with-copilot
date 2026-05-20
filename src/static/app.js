@@ -641,10 +641,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // Clear email validation errors in the registration form
+  function clearEmailValidation() {
+    const emailError = document.getElementById("email-error");
+    const emailInput = document.getElementById("email");
+    emailError.classList.add("hidden");
+    emailInput.classList.remove("invalid");
+  }
+
   // Open registration modal
   function openRegistrationModal(activityName) {
     modalActivityName.textContent = activityName;
     activityInput.value = activityName;
+    clearEmailValidation();
     registrationModal.classList.remove("hidden");
     // Add slight delay to trigger animation
     setTimeout(() => {
@@ -658,6 +667,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
       registrationModal.classList.add("hidden");
       signupForm.reset();
+      clearEmailValidation();
     }, 300);
   }
 
@@ -824,7 +834,29 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const email = document.getElementById("email").value;
+    const emailInput = document.getElementById("email");
+    const emailError = document.getElementById("email-error");
+    const email = emailInput.value.trim();
+
+    // Client-side validation: email must end with @mergington.edu
+    const emailPattern = /^[a-zA-Z0-9_%+-]+(\.[a-zA-Z0-9_%+-]+)*@mergington\.edu$/;
+    if (!email) {
+      emailError.textContent = "Email is required.";
+      emailError.classList.remove("hidden");
+      emailInput.classList.add("invalid");
+      return;
+    }
+    if (!emailPattern.test(email)) {
+      emailError.textContent = "Email must be a valid @mergington.edu address.";
+      emailError.classList.remove("hidden");
+      emailInput.classList.add("invalid");
+      return;
+    }
+
+    // Clear any previous validation errors
+    emailError.classList.add("hidden");
+    emailInput.classList.remove("invalid");
+
     const activity = activityInput.value;
 
     try {

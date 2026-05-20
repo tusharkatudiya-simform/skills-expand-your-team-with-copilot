@@ -2,6 +2,7 @@
 Endpoints for the High School Management System API
 """
 
+import re
 from fastapi import APIRouter, HTTPException, Query
 from fastapi.responses import RedirectResponse
 from typing import Dict, Any, Optional, List
@@ -73,6 +74,12 @@ def signup_for_activity(activity_name: str, email: str, teacher_username: Option
     teacher = teachers_collection.find_one({"_id": teacher_username})
     if not teacher:
         raise HTTPException(status_code=401, detail="Invalid teacher credentials")
+
+    # Validate email format and domain
+    email_pattern = re.compile(r'^[a-zA-Z0-9_%+-]+(\.[a-zA-Z0-9_%+-]+)*@mergington\.edu$')
+    if not email_pattern.match(email):
+        raise HTTPException(
+            status_code=400, detail="Invalid email address. Must be a valid @mergington.edu address")
     
     # Get the activity
     activity = activities_collection.find_one({"_id": activity_name})
