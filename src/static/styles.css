@@ -73,6 +73,34 @@ header h2 {
   font-size: 1.2rem;
 }
 
+/* App navigation (shared across pages) */
+#app-nav {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.nav-link {
+  color: var(--primary-text, #fff);
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  transition: opacity 0.2s, background-color 0.2s;
+}
+
+.nav-link:hover {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.nav-link.active {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.25);
+  font-weight: 600;
+}
+
 main {
   display: flex;
   flex-wrap: wrap;
