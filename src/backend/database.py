@@ -11,6 +11,7 @@ client = mongomock.MongoClient()
 db = client['mergington_high']
 activities_collection = db['activities']
 teachers_collection = db['teachers']
+fuel_entries_collection = db['fuel_entries']
 
 # Methods
 def hash_password(password):

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fuel Tracker – Finance Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="fuel_tracker.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Finance Tracker</h1>
+      <h2>⛽ Fuel Tracker</h2>
+      <nav id="app-nav">
+        <a href="/static/index.html" class="nav-link">🏫 School Activities</a>
+        <a href="/static/fuel_tracker.html" class="nav-link active">⛽ Fuel Tracker</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Summary Cards -->
+      <section id="summary-section">
+        <div class="summary-cards">
+          <div class="summary-card">
+            <div class="summary-icon">📍</div>
+            <div class="summary-label">Total Distance</div>
+            <div class="summary-value" id="summary-total-km">— km</div>
+          </div>
+          <div class="summary-card">
+            <div class="summary-icon">💸</div>
+            <div class="summary-label">Total Spent</div>
+            <div class="summary-value" id="summary-total-spent">₹ —</div>
+          </div>
+          <div class="summary-card">
+            <div class="summary-icon">🏎️</div>
+            <div class="summary-label">Avg Cost / km</div>
+            <div class="summary-value" id="summary-avg-cost">₹ —/km</div>
+          </div>
+          <div class="summary-card">
+            <div class="summary-icon">🔢</div>
+            <div class="summary-label">Fill-ups</div>
+            <div class="summary-value" id="summary-fillups">—</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Add Entry Form -->
+      <section id="add-entry-section">
+        <h3>Add Fuel Entry</h3>
+        <form id="add-entry-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="entry-amount">Amount Paid (₹)</label>
+              <input
+                type="number"
+                id="entry-amount"
+                min="1"
+                step="0.01"
+                placeholder="e.g. 500"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="entry-odometer">Odometer Reading (km)</label>
+              <input
+                type="number"
+                id="entry-odometer"
+                min="0"
+                step="0.1"
+                placeholder="e.g. 12500"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="entry-date">Date</label>
+              <input
+                type="date"
+                id="entry-date"
+              />
+            </div>
+          </div>
+          <button type="submit" class="btn-primary">Add Entry</button>
+        </form>
+        <div id="form-message" class="hidden message"></div>
+      </section>
+
+      <!-- Entries Table -->
+      <section id="entries-section">
+        <h3>Fuel History</h3>
+        <div id="entries-container">
+          <p class="empty-state">No entries yet. Add your first fuel entry above!</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Finance Tracker</p>
+    </footer>
+
+    <script src="fuel_tracker.js"></script>
+  </body>
+</html>
